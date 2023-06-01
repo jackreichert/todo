@@ -20,7 +20,3 @@ These are all things I've had to implement for the teams I've led. So here I can
 What's great about it is I can rebuild it 10x times from scratch practicing the basics first. These basics are things I'll likely be asked in interviews, so they'll be at the tips of my fingers. But I can also build upon each skill as I build the project.
 
 And... once I'm done I'll have a full project that I can switch out the "todo" functionality of and insert anything.
-
-
-
-...

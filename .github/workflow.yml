@@ -2,7 +2,14 @@ name: CI
 
 on:
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - jr-testing-pipeline
+    types: [opened, reopened]
+  push:
+    branches:
+      - main
+      - jr-testing-pipeline
 
 jobs:
   build:

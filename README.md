@@ -1,6 +1,6 @@
-# To Do App
+# (WIP) To Do App
 
-This project is a framework for me to keep my skills fresh.
+This project is a framework for me to keep my skills fresh. It's a work in progress, so if you got to it early and not much is here, don't fret. Ask me about it!
 
 My goal is to do it like a kata, I've done really complex projects. This is to review, rethink, how I approach basic decisions.
 

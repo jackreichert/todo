@@ -1,15 +1,6 @@
-name: CI
+name: Run tests
 
-on:
-  pull_request:
-    branches:
-      - main
-      - jr-testing-pipeline
-    types: [opened, reopened]
-  push:
-    branches:
-      - main
-      - jr-testing-pipeline
+on: [push, pull_request]
 
 jobs:
   build:

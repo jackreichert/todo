@@ -16,3 +16,5 @@ jobs:
         run: npm run lint
       - name: run tests
         run: npm run test
+      - name: create badge
+        run: npm run coverage:badge

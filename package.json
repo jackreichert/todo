@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "npm --prefix ./client/ run dev",
     "test": "npm --prefix ./client/ run test",
+    "coverage:badge": "npm --prefix ./client/ run coverage:badge",
     "lint": "npm --prefix ./client/ run lint"
   },
   "repository": {

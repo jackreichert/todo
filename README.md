@@ -1,5 +1,7 @@
 # (WIP) Over-Engineered To Do App
 
+$coverage$
+
 This project is a framework for me to keep my skills fresh. It's a work in progress, so if you got to it early and not
 much is here, don't fret. Ask me about it!
 

@@ -7,6 +7,6 @@ describe('App', () => {
     it('renders App component', () => {
         render(<App />);
 
-        expect(screen.getByText('Vite + React')).toBeInTheDocument();
+        expect(screen.getByText('Over-Engineered To Do App')).toBeInTheDocument();
     });
 });

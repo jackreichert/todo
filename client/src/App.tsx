@@ -9,7 +9,7 @@ const [tasks, setTasks] = useState<TaskType[]>([])
 
   return (
     <AppContext.Provider value={{tasks, setTasks}}>
-      <h1>Over-Engineered To Do App</h1>
+      <h1 className={`font-mono`}>Over-Engineered To Do App</h1>
     </AppContext.Provider>
   )
 }

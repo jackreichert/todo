@@ -1,8 +1,8 @@
 import {useState} from 'react'
-import './App.css'
+import './App.scss'
 
-import {TaskType} from "./types";
-import {AppContext} from "./context.ts";
+import {TaskType} from "./types/";
+import {AppContext} from "./context";
 
 function App() {
 const [tasks, setTasks] = useState<TaskType[]>([])

@@ -18,3 +18,26 @@ jobs:
         run: npm run test
       - name: create badge
         run: npm run coverage:badge
+      - name: Commit changes
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const { Octokit } = require('@octokit/rest');
+            const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+            const content = fs.readFileSync('README.md', 'utf8');
+            const { data } = await octokit.repos.getContent({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: 'README.md',
+              ref: context.sha,
+            });
+            await octokit.repos.createOrUpdateFileContents({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: 'README.md',
+              message: 'Update README.md',
+              content: Buffer.from(content).toString('base64'),
+              sha: data.sha,
+            });

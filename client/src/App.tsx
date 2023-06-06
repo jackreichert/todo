@@ -4,7 +4,7 @@ import './App.scss'
 import {TaskType} from "./types/";
 import {AppContext} from "./context";
 import {TaskInput} from "./components/TaskInput";
-import {List} from "./components/List";
+import {List} from "./components/TaskList";
 
 function App() {
     const [tasks, setTasks] = useState<TaskType[]>([])

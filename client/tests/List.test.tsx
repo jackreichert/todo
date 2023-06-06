@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 
-import {List} from "../src/components/List";
+import {List} from "../src/components/TaskList";
 
 describe('List', () => {
     it('contains a list html element', () => {

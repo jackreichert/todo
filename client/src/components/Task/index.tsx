@@ -14,6 +14,9 @@ export function Task({title, status}: TaskType) {
     }
 
     return (
-        <li>{title} <input type="checkbox" checked={status} onChange={handleChange}/></li>
+        <li className={`list-none my-4 flex justify-between`}>
+            {title}
+            <input type="checkbox" checked={status} onChange={handleChange}/>
+        </li>
     )
 }

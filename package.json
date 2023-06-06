@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm --prefix ./client/ run dev",
-    "test": "npm --prefix ./client/ run test",
+    "test": "npm --prefix ./client/ run test:pipeline",
     "coverage:badge": "npm --prefix ./client/ run coverage:badge",
     "lint": "npm --prefix ./client/ run lint"
   },

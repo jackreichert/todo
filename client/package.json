@@ -7,9 +7,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "test": "vitest run  --coverage.enabled --coverage.reporter='json-summary'",
+    "test": "vitest run  --coverage.enabled",
+    "test:pipeline": "vitest run  --coverage.enabled --coverage.reporter='json-summary'",
     "coverage:badge": "coverage-badge-creator",
-    "testrun": "vitest",
+    "test:wait": "vitest",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -1,18 +1,19 @@
-import {fireEvent, render} from "@testing-library/react";
-import App from "../src/App";
+import {ByRoleOptions, fireEvent, render, within} from "@testing-library/react";
 import * as React from "react";
+import MockProvider from "./MockProvider";
 
 describe('Task', () => {
     it('can toggle the completed checkbox', () => {
-        const {getByTestId} = render(<App/>);
-        const input = getByTestId('task-input') as HTMLInputElement;
-        const button = getByTestId('task-submit') as HTMLButtonElement;
-        const taskTitle = 'Go to the store'
+        const {getByRole} = render(<MockProvider/>);
 
-        fireEvent.change(input, {target: {value: taskTitle}});
-        fireEvent.click(button)
+        const list = getByRole('list')
+        const { getAllByRole } = within(list)
 
-        const list = getByTestId('task-list') as HTMLElement
-        expect(list.textContent).toContain(taskTitle)
+        const items = getAllByRole("listitem")
+        const checkboxes = getAllByRole('checkbox', {container: items} as ByRoleOptions)
+
+        expect(checkboxes[1]).not.toBeChecked()
+        fireEvent.click(checkboxes[1])
+        expect(checkboxes[1]).toBeChecked()
     })
 })

@@ -20,23 +20,5 @@ jobs:
       - name: run tests
         run: npm run test
 
-      - name: Create Status Check
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { data } = await octokit.checks.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              name: 'CI',
-              head_sha: context.sha,
-              status: 'completed',
-              conclusion: 'success',
-              output: {
-                title: 'CI',
-                summary: 'All tests passed'
-              }
-            })
-
       - name: create badge
         run: npm run coverage:badge

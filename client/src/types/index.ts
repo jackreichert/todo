@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface TaskType {
-    task:string;
+    title:string;
     status:boolean;
 }
 

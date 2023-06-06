@@ -6,15 +6,19 @@ on:
       - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: install packages
         run: cd client && npm install
+
       - name: lint code
         run: npm run lint
+
       - name: run tests
         run: npm run test
+
       - name: create badge
         run: npm run coverage:badge

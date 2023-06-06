@@ -16,5 +16,11 @@ jobs:
         run: npm run lint
       - name: run tests
         run: npm run test
+      - name: Set status check
+        uses: peter-evans/create-pull-request-status@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: success
+          description: All tests passed
       - name: create badge
         run: npm run coverage:badge

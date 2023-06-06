@@ -10,17 +10,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: install packages
         run: cd client && npm install
+
       - name: lint code
         run: npm run lint
+
       - name: run tests
         run: npm run test
-      - name: Set status check
-        uses: peter-evans/create-pull-request-status@v1.0.0
+
+      - name: Create Status Check
+        uses: actions/github-script@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          state: success
-          description: All tests passed
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data } = await octokit.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: 'CI',
+              head_sha: context.sha,
+              status: 'completed',
+              conclusion: 'success',
+              output: {
+                title: 'CI',
+                summary: 'All tests passed'
+              }
+            })
+
       - name: create badge
         run: npm run coverage:badge

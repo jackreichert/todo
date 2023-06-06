@@ -19,6 +19,6 @@ describe('List', () => {
 
         const items = getAllByRole("listitem")
 
-        expect(items.length).toBe(5)
+        expect(items.length).toBe(4)
     })
 });

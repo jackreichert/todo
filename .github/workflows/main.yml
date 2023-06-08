@@ -27,5 +27,7 @@ jobs:
         uses: EndBug/add-and-commit@v9.1.3
         with:
           new_branch: ${{ github.event.pull_request.head.ref }}
+          committer_name: Jack Reichert
+          committer_email: awesome@jackreichert.com
           message: "updates readme with test badge"
           add: ./client/README.md

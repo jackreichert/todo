@@ -1,3 +1,3 @@
 ## Over-engineered To Do Client
 
-$coverage$
+![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?prefix=$coverage$)

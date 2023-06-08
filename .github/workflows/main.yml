@@ -29,6 +29,6 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           add: ./client/README.md
           new_branch: ${{ github.event.pull_request.head.ref }}
-          committer_name: Jack Reichert
-          committer_email: awesome@jackreichert.com
+          committer_name: Github Actions
+          committer_email: actions@github.com
           message: "Updates readme with test coverage"

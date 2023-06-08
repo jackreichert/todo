@@ -4,7 +4,7 @@
   "description": "This project is a framework for me to keep my skills fresh. It's a work in progress, so if you got to it early and not much is here, don't fret. Ask me about it!",
   "main": "index.js",
   "scripts": {
-    "dev": "npm --prefix ./client/ run dev",
+    "dev:client": "npm --prefix ./client/ run dev",
     "test": "npm --prefix ./client/ run test:pipeline",
     "coverage:badge": "npm --prefix ./client/ run coverage:badge",
     "lint": "npm --prefix ./client/ run lint"

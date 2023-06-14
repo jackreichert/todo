@@ -28,4 +28,18 @@ describe('Input', () => {
         fireEvent.keyDown(input, { key: 'Enter', code: 13, charCode: 13 });
         expect(input.value).toBe('');
     });
+
+    test('shows error on empty input submission', () => {
+        const {getByTestId} = render(<TaskInput/>);
+        const input = getByTestId('task-input') as HTMLInputElement;
+
+        let errorMessage = getByTestId('task-error') as HTMLInputElement;
+        expect(errorMessage.textContent).not.toContain("Did you mean to enter an empty input?");
+
+        fireEvent.change(input, {target: {value: ''}});
+        fireEvent.keyDown(input, { key: 'Enter', code: 13, charCode: 13 });
+
+        errorMessage = getByTestId('task-error') as HTMLInputElement;
+        expect(errorMessage.textContent).toContain("Did you mean to enter an empty input?");
+    });
 });

@@ -5,11 +5,13 @@ import {TaskType} from "../../types";
 export function TaskInput() {
     const [taskInput, setTaskInput] = useState<string>('')
     const {tasks, setTasks} = useContext(AppContext)
+    const [wasChanged, setWasChanged] = useState(false)
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         setTaskInput(event.target.value)
     }
 
     function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+        setWasChanged(true)
         if (event.key === 'Enter' && isValid()) {
             updateTaskList()
         }
@@ -28,7 +30,7 @@ export function TaskInput() {
     }
 
     function isValid():boolean {
-        return taskInput.length >= 3
+        return wasChanged && taskInput.length >= 3
     }
 
     return (
@@ -43,6 +45,7 @@ export function TaskInput() {
                 onKeyDown={handleKeyDown}
                 minLength={3}
             />
+            <span data-testid='task-error'>Did you mean to enter an empty input?</span>
             <button
                 data-testid='task-submit'
                 className={`ml-2 p-4 border-solid border-2 border-slate-300`}

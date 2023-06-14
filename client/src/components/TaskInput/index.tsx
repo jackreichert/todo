@@ -10,19 +10,25 @@ export function TaskInput() {
     }
 
     function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && isValid()) {
             updateTaskList()
         }
     }
 
     function handleClick() {
-        updateTaskList()
+        if (isValid()) {
+            updateTaskList()
+        }
     }
 
     function updateTaskList() {
-        const newItem:TaskType = {title: taskInput, status: false}
+        const newItem: TaskType = {title: taskInput, status: false}
         setTasks([...tasks, newItem])
         setTaskInput('')
+    }
+
+    function isValid():boolean {
+        return taskInput.length >= 3
     }
 
     return (
@@ -35,6 +41,7 @@ export function TaskInput() {
                 value={taskInput}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
+                minLength={3}
             />
             <button
                 data-testid='task-submit'

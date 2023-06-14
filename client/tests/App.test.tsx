@@ -28,15 +28,36 @@ describe('App', () => {
     });
 
     it('adds items to the List', () => {
-        const {getByTestId} = render(<MockProvider/>);
+        const {getByTestId, getAllByRole} = render(<MockProvider/>);
         const input = getByTestId('task-input') as HTMLInputElement;
         const button = getByTestId('task-submit') as HTMLButtonElement;
         const taskTitle = 'Go to the store'
+
+        let items = getAllByRole("listitem") as HTMLElement[]
+        expect(items.length).toEqual(4)
 
         fireEvent.change(input, {target: {value: taskTitle}});
         fireEvent.click(button)
 
         const list = getByTestId('task-list') as HTMLElement
         expect(list.textContent).toContain(taskTitle)
+
+        items = getAllByRole("listitem") as HTMLElement[]
+        expect(items.length).toEqual(5)
+    })
+
+    it('does not add empty items to the List', () => {
+        const {getByTestId, getAllByRole} = render(<MockProvider/>);
+        const input = getByTestId('task-input') as HTMLInputElement;
+        const button = getByTestId('task-submit') as HTMLButtonElement;
+
+        let items = getAllByRole("listitem") as HTMLElement[]
+        expect(items.length).toEqual(4)
+
+        fireEvent.change(input, {target: {value: ''}});
+        fireEvent.click(button)
+
+        items = getAllByRole("listitem") as HTMLElement[]
+        expect(items.length).toEqual(4)
     })
 });

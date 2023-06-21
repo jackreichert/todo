@@ -1,8 +1,9 @@
-import {AppContext} from "../src/context";
+import React, {useContext, useEffect, useState} from "react";
+import '@testing-library/jest-dom'
 import {describe} from "vitest";
-
-import {useContext, useEffect, useState} from "react";
 import {render} from "@testing-library/react";
+
+import {AppContext} from "../src/context";
 import {TaskType} from "../src/types";
 
 const Task = function () {

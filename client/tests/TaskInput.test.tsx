@@ -2,7 +2,7 @@ import * as React from 'react';
 import '@testing-library/jest-dom'
 import {fireEvent, render} from '@testing-library/react';
 
-import {TaskInput} from "../src/components/TaskInput";
+import TaskInput from "../src/components/TaskInput";
 
 describe('Input', () => {
     it('contains an input html element', () => {

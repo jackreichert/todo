@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 
 import '../src/App.scss'
-import {TaskType} from "../src/types/";
-import {AppContext} from "../src/context";
+import {TaskType} from "../src/types";
+import AppContext from "../src/context";
 import App from "../src/components/App";
 
 

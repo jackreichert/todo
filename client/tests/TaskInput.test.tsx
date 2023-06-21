@@ -3,7 +3,6 @@ import '@testing-library/jest-dom'
 import {fireEvent, render} from '@testing-library/react';
 
 import {TaskInput} from "../src/components/TaskInput";
-import { errorText } from '../src/components/InputError';
 
 describe('Input', () => {
     it('contains an input html element', () => {
@@ -32,6 +31,7 @@ describe('Input', () => {
     });
 
     test('shows error on empty input submission', () => {
+        const errorText = "Please enter a task longer than 3 letters."
         const {getByTestId} = render(<TaskInput/>);
         const input = getByTestId('task-input') as HTMLInputElement;
 

@@ -9,3 +9,7 @@ export interface AppContextType {
     tasks: TaskType[];
     setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
 }
+
+export interface IsErrorProp {
+    isError: boolean
+}

@@ -1,7 +1,9 @@
 import * as React from 'react';
+import '@testing-library/jest-dom'
 import {fireEvent, render} from '@testing-library/react';
 
 import {TaskInput} from "../src/components/TaskInput";
+import { errorText } from '../src/components/InputError';
 
 describe('Input', () => {
     it('contains an input html element', () => {
@@ -34,12 +36,16 @@ describe('Input', () => {
         const input = getByTestId('task-input') as HTMLInputElement;
 
         let errorMessage = getByTestId('task-error') as HTMLInputElement;
-        expect(errorMessage.textContent).not.toContain("Did you mean to enter an empty input?");
+        expect(errorMessage.textContent).not.toContain(errorText);
 
         fireEvent.change(input, {target: {value: ''}});
         fireEvent.keyDown(input, { key: 'Enter', code: 13, charCode: 13 });
 
         errorMessage = getByTestId('task-error') as HTMLInputElement;
-        expect(errorMessage.textContent).toContain("Did you mean to enter an empty input?");
+        expect(errorMessage.textContent).toContain(errorText);
+
+        fireEvent.focus(input)
+        errorMessage = getByTestId('task-error') as HTMLInputElement;
+        expect(errorMessage.textContent).not.toContain(errorText);
     });
 });

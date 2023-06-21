@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
+import '@testing-library/jest-dom'
 import {describe} from "vitest";
 import {render} from "@testing-library/react";
 

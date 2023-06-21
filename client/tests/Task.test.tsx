@@ -1,5 +1,6 @@
+import '@testing-library/jest-dom'
 import {ByRoleOptions, fireEvent, render, within} from "@testing-library/react";
-import * as React from "react";
+import React from "react";
 import MockProvider from "./MockProvider";
 
 describe('Task', () => {

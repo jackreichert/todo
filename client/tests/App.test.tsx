@@ -1,5 +1,5 @@
 import {fireEvent, render, screen} from '@testing-library/react';
-
+import '@testing-library/jest-dom'
 import App from '../src/components/App';
 import MockProvider from "./MockProvider";
 import * as React from "react";

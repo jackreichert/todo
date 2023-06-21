@@ -1,9 +1,11 @@
-import {createContext} from "react";
-import {AppContextType} from "./types/";
+import { createContext } from 'react';
+import { AppContextType } from './types.ts';
 
-export const AppContext = createContext<AppContextType>({
-    tasks: [{title: '', status: false}],
-    setTasks: () => {
-        // intentionally empty
-    }
+const AppContext = createContext<AppContextType>({
+  tasks: [{ title: '', status: false }],
+  setTasks: () => {
+    // intentionally empty
+  },
 });
+
+export default AppContext;

@@ -1,20 +1,22 @@
-import {useState} from 'react'
-import './App.scss'
+import React, { useState, useMemo } from 'react';
+import './App.scss';
 
-import {TaskType} from "./types/";
-import {AppContext} from "./context";
-import App from "./components/App.tsx";
+import { TaskType } from './types.ts';
+import AppContext from './context.ts';
+import App from './components/App.tsx';
 
 function AppProvider() {
-    const [tasks, setTasks] = useState<TaskType[]>([])
+  const [tasks, setTasks] = useState<TaskType[]>([]);
 
-    return (
-        <div className="container mx-auto">
-            <AppContext.Provider value={{tasks, setTasks}}>
-                <App/>
-            </AppContext.Provider>
-        </div>
-    )
+  const contextValue = useMemo(() => ({ tasks, setTasks }), [tasks, setTasks]);
+
+  return (
+    <div className="container mx-auto">
+      <AppContext.Provider value={contextValue}>
+        <App />
+      </AppContext.Provider>
+    </div>
+  );
 }
 
-export default AppProvider
+export default AppProvider;

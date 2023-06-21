@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import {describe} from "vitest";
 import {render} from "@testing-library/react";
 
-import {AppContext} from "../src/context";
+import AppContext from "../src/context";
 import {TaskType} from "../src/types";
 
 const Task = function () {

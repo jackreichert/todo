@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom'
 import {render, within} from '@testing-library/react';
 
-import {List} from "../src/components/TaskList";
+import List from "../src/components/TaskList";
 import MockProvider from "./MockProvider";
 
 describe('List', () => {

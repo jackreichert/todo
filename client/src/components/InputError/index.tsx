@@ -1,3 +1,4 @@
+import React from "react";
 import { IsErrorProp } from "../../types"
 
 export function InputError({ isError }: IsErrorProp) {

@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
-import { InputError } from "../InputError/index.tsx";
-import {AppContext} from "../../context.ts";
+import { InputError } from "../InputError/";
+import {AppContext} from "../../context";
 import {TaskType} from "../../types";
 
 export function TaskInput() {

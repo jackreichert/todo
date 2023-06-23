@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "todo-server"
+version = "0.1.0"
+description = ""
+authors = ["Jack Reichert <awesome@jackreichert.com>"]
+readme = "README.md"
+packages = [{include = "todo_server"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+black = "^23.3.0"
+pytest = "^7.3.1"
+flask = "^2.3.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

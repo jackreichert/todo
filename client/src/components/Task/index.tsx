@@ -8,7 +8,7 @@ export default function Task({ title, status }: TaskType) {
   function handleChange() {
     const newTasks: TaskType[] = tasks.map((task) => (title === task.title ? {
       title: task.title,
-      status: !task.status
+      status: !task.status,
     } : task));
     setTasks(newTasks);
   }

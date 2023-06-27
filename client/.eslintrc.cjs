@@ -13,7 +13,7 @@ module.exports = {
   rules: {
     'react/jsx-uses-react': 'error',
     'react-refresh/only-export-components': 'warn',
-    'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
+    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
   },
   settings: {
     'import/resolver': {

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import '../App.scss';
 import TaskInput from './TaskInput/index.tsx';
 import List from './TaskList/index.tsx';

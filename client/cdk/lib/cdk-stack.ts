@@ -99,6 +99,11 @@ export class CdkStack extends cdk.Stack {
       fieldName: 'updateTaskStatus',
     });
 
+    lambdaDs.createResolver('deleteTask', {
+      typeName: 'Mutation',
+      fieldName: 'deleteTask',
+    });
+    
     // Output the API endpoint URL and API key
     new cdk.CfnOutput(this, 'ApiEndpoint', {
       value: api.graphqlUrl,

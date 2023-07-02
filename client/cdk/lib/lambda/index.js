@@ -71,6 +71,25 @@ exports.handler = async (event) => {
       }
     }
 
+    case 'deleteTask': {
+        console.log('Handling "deleteTask" mutation');
+      
+        const params = {
+          TableName: process.env.TABLE_NAME,
+          Key: {
+            id: event.arguments.id,
+          },
+        };
+      
+        try {
+          await dynamoDb.delete(params).promise();
+          return true;
+        } catch (error) {
+          console.error('Error deleting task:', error);
+          throw new Error('Failed to delete task');
+        }
+      }
+      
     default: {
       console.log(`Unknown field: ${event.info.fieldName}`);
       break;

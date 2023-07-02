@@ -1,6 +1,7 @@
 type Mutation {
   addTask(title: String!, status: Boolean!): Task
   updateTaskStatus(id: ID!, status: Boolean!): Task
+  deleteTask(id: ID!): Boolean
 }
 
 type Task {

@@ -19,20 +19,3 @@ new CdkStack(app, 'TodoDemoApp', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
-
-//await app.synth()
-// app.synth().then(() => {
-//   const childProcess = spawn('bash', ['-c', `jq -r '.TodoDemoApp.BucketLink' cdk-outputs.json | xargs -I {} aws s3 sync ../dist/ "s3://{}"`]);
-
-//   childProcess.stdout.on('data', (data) => {
-//     console.log(`Command output: ${data}`);
-//   });
-
-//   childProcess.stderr.on('data', (data) => {
-//     console.error(`Command error: ${data}`);
-//   });
-
-//   childProcess.on('exit', (code) => {
-//     console.log(`Command exited with code ${code}`);
-//   });
-// });

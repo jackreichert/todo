@@ -3,6 +3,7 @@ import React from 'react';
 export interface TaskType {
     title:string;
     status:boolean;
+    id?: string;
 }
 
 export interface AppContextType {

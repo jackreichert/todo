@@ -39,7 +39,7 @@ export default function Task({ id, title, status }: TaskType) {
 
 
   return (
-    <li className="list-none my-4 flex space-x-9">
+    <li className="list-none my-4 flex space-x-9 items-center">
       <div className="flex-1 text-left">{title}</div>
       <div className="w-10">
         {isLoading ? (

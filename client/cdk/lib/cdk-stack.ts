@@ -1,10 +1,8 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
-//import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
@@ -82,16 +80,16 @@ export class CdkStack extends cdk.Stack {
     // Create a Lambda data source for the GraphQL API
     const lambdaDs = api.addLambdaDataSource('lambdaDataSource', lambdaFn);
 
-    // Create a resolver for the GraphQL 'hello' field
-
-    lambdaDs.createResolver('addTaskResolver',{
-      typeName: 'Mutation',
-      fieldName: 'addTask',
-    });
+    // Create resolvers for the GraphQL API
 
     lambdaDs.createResolver('getTasks',{
       typeName: 'Query',
       fieldName: 'getTasks',
+    });
+
+    lambdaDs.createResolver('addTaskResolver',{
+      typeName: 'Mutation',
+      fieldName: 'addTask',
     });
     
     lambdaDs.createResolver('updateTaskStatus',{
@@ -103,7 +101,7 @@ export class CdkStack extends cdk.Stack {
       typeName: 'Mutation',
       fieldName: 'deleteTask',
     });
-    
+
     // Output the API endpoint URL and API key
     new cdk.CfnOutput(this, 'ApiEndpoint', {
       value: api.graphqlUrl,

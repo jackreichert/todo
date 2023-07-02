@@ -22,10 +22,9 @@ export default function List() {
 
 function PlaceholderTask() {
   return (
-    <li className="list-none my-4 flex space-x-9">
-      <div className="flex-1 animate-pulse bg-gray-200 h-6 w-40"></div>
+    <li className="list-none my-4 flex space-x-4">
+      <div className="flex-1 animate-pulse bg-gray-200 h-6 w-100"></div>
       <div className="w-10 animate-pulse bg-gray-200 h-6 rounded"></div>
-      <div className="w-15 animate-pulse bg-gray-200 h-6 rounded"></div>
     </li>
   );
 }

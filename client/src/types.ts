@@ -9,6 +9,7 @@ export interface TaskType {
 export interface AppContextType {
     tasks: TaskType[];
     setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
+    loadingTasks: boolean;
 }
 
 export interface IsErrorProp {

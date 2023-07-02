@@ -6,6 +6,7 @@ const AppContext = createContext<AppContextType>({
   setTasks: () => {
     // intentionally empty
   },
+  loadingTasks: false,
 });
 
 export default AppContext;

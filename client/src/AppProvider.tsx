@@ -25,11 +25,11 @@ function AppProvider() {
     fetchData();
   }, []);
 
-  const contextValue = useMemo(() => ({ tasks, setTasks }), [tasks, setTasks]);
+  const contextValue = useMemo(() => ({ tasks, setTasks, loadingTasks }), [tasks, setTasks, loadingTasks]);
 
   return (
     <div className="container mx-auto">
-      <AppContext.Provider value={{ tasks, setTasks, loadingTasks }}>
+      <AppContext.Provider value={contextValue}>
         <App />
       </AppContext.Provider>
     </div>

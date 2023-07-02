@@ -1,38 +1,43 @@
 import { TaskType } from './types';
 import cdkOutputs from './../cdk/cdk-outputs.json';
 import { ApolloClient, InMemoryCache, createHttpLink, gql } from '@apollo/client';
-function getApiKeyFromCDKOutputs() {
-    return cdkOutputs.TodoDemoApp.ApiKey;
+
+function getApiHeaders() {
+    return {
+        'Content-Type': 'application/json',
+        'x-api-key': cdkOutputs.TodoDemoApp.ApiKey,
+    };
 }
 
-function getEndpointFromCDKOutputs() {
+function getApiEndpoint() {
     return cdkOutputs.TodoDemoApp.ApiEndpoint;
+}
+
+function createApolloClient() {
+    const httpLink = createHttpLink({
+        uri: getApiEndpoint(),
+        headers: getApiHeaders(),
+    });
+
+    return new ApolloClient({
+        link: httpLink,
+        cache: new InMemoryCache(),
+    });
 }
 
 async function fetchTasks(): Promise<TaskType[]> {
     try {
-        const httpLink = createHttpLink({
-            uri: getEndpointFromCDKOutputs(),
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': getApiKeyFromCDKOutputs(),
-            },
-        });
-
-        const client = new ApolloClient({
-            link: httpLink,
-            cache: new InMemoryCache(),
-        });
+        const client = createApolloClient();
 
         const query = gql`
-        query GetTasks {
-          getTasks {
-            id
-            title
-            status
-          }
-        }
-      `;
+            query GetTasks {
+                getTasks {
+                    id
+                    title
+                    status
+                }
+            }
+        `;
 
         const response = await client.query({
             query,
@@ -52,28 +57,17 @@ async function fetchTasks(): Promise<TaskType[]> {
 
 async function addTask(title: string, status: boolean): Promise<TaskType> {
     try {
-        const httpLink = createHttpLink({
-            uri: getEndpointFromCDKOutputs(),
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': getApiKeyFromCDKOutputs(),
-            },
-        });
-
-        const client = new ApolloClient({
-            link: httpLink,
-            cache: new InMemoryCache(),
-        });
+        const client = createApolloClient();
 
         const mutation = gql`
-    mutation AddTask($title: String!, $status: Boolean!) {
-      addTask(title: $title, status: $status) {
-        id
-        title
-        status
-      }
-    }
-  `;
+            mutation AddTask($title: String!, $status: Boolean!) {
+                addTask(title: $title, status: $status) {
+                    id
+                    title
+                    status
+                }
+            }
+        `;
 
         const variables = {
             title,
@@ -99,28 +93,17 @@ async function addTask(title: string, status: boolean): Promise<TaskType> {
 
 async function updateTaskStatus(id: string, status: boolean): Promise<TaskType> {
     try {
-        const httpLink = createHttpLink({
-            uri: getEndpointFromCDKOutputs(),
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': getApiKeyFromCDKOutputs(),
-            },
-        });
-
-        const client = new ApolloClient({
-            link: httpLink,
-            cache: new InMemoryCache(),
-        });
+        const client = createApolloClient();
 
         const mutation = gql`
-        mutation UpdateTaskStatus($id: ID!, $status: Boolean!) {
-          updateTaskStatus(id: $id, status: $status) {
-            id
-            title
-            status
-          }
-        }
-      `;
+            mutation UpdateTaskStatus($id: ID!, $status: Boolean!) {
+                updateTaskStatus(id: $id, status: $status) {
+                    id
+                    title
+                    status
+                }
+            }
+        `;
 
         const variables = {
             id,
@@ -146,18 +129,7 @@ async function updateTaskStatus(id: string, status: boolean): Promise<TaskType> 
 
 async function deleteTask(id: string): Promise<void> {
     try {
-      const httpLink = createHttpLink({
-        uri: getEndpointFromCDKOutputs(),
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': getApiKeyFromCDKOutputs(),
-        },
-      });
-  
-      const client = new ApolloClient({
-        link: httpLink,
-        cache: new InMemoryCache(),
-      });
+        const client = createApolloClient();
   
       const mutation = gql`
         mutation DeleteTask($id: ID!) {

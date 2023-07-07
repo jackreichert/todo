@@ -5,10 +5,8 @@ WORKDIR /app
 COPY poetry.lock pyproject.toml /app/
 RUN pip install poetry && poetry config virtualenvs.create false && poetry install --no-dev
 
-COPY dist/*.whl /app/
-RUN pip install *.whl
-
-COPY server/* /app/
+COPY . /app/
+RUN poetry build && pip install dist/*.whl
 
 EXPOSE 5000
 

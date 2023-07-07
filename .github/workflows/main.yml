@@ -9,6 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
       - uses: actions/checkout@v2
 
       - name: install packages
@@ -32,3 +33,16 @@ jobs:
           committer_name: Github Actions
           committer_email: actions@github.com
           message: "Updates readme with test coverage"
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+      - uses: actions/checkout@v2
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: false
+          tags: username/repo-name:${{ github.sha }}

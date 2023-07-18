@@ -11,6 +11,8 @@ black = "^23.3.0"
 pytest = "^7.4.0"
 flask = "^2.3.2"
 gunicorn = "^20.1.0"
+ariadne = "^0.20.1"
+flask-cors = "^4.0.0"
 
 
 [build-system]

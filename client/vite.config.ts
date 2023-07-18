@@ -1,5 +1,5 @@
-import { defineConfig, PluginOption } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig, PluginOption } from 'vite'; // eslint-disable-line import/no-extraneous-dependencies
+import react from '@vitejs/plugin-react'; // eslint-disable-line import/no-extraneous-dependencies
 
 type JSXConfig = {
   plugins: PluginOption[][];

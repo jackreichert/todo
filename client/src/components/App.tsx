@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line import/no-extraneous-dependencies
 import '../App.scss';
 import TaskInput from './TaskInput/index.tsx';
 import List from './TaskList/index.tsx';

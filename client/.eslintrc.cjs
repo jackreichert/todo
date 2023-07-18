@@ -14,6 +14,14 @@ module.exports = {
     'react/jsx-uses-react': 'error',
     'react-refresh/only-export-components': 'warn',
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'import/no-extraneous-dependencies': [
+      'error', {
+        devDependencies: false,
+        optionalDependencies: false,
+        peerDependencies: false,
+        packageDir: './',
+      },
+    ],
   },
   settings: {
     'import/resolver': {

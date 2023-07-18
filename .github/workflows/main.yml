@@ -40,10 +40,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build Docker image
+      - name: Build server Docker image
         uses: docker/build-push-action@v2
         with:
           context: ./server
-          dockerfile: ./server/Dockerfile
+          dockerfile: ./server/app/Dockerfile-dev
+          push: false
+          tags: jackreichert/over-engineered-todo:${{ github.sha }}
+
+      - name: Build client Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./client
+          dockerfile: ./client/Dockerfile-dev
           push: false
           tags: jackreichert/over-engineered-todo:${{ github.sha }}

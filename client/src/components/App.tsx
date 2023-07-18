@@ -5,14 +5,14 @@ import React, { useEffect, useContext } from 'react';
 import TaskInput from './TaskInput/index.tsx';
 import List from './TaskList/index.tsx';
 
-import { getTasks } from '../utils.ts';
+// import { getTasks } from '../utils.ts';
 import AppContext from '../context.ts';
 
 function App() {
   const { setTasks } = useContext(AppContext);
 
   useEffect(() => {
-    getTasks(setTasks);
+    // getTasks(setTasks);
   }, [setTasks]);
 
   return (

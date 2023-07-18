@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'; // eslint-disable-line import/no-extraneous-dependencies
+import React, { useState, useMemo } from 'react';
 import './App.scss';
 
 import { TaskType } from './types.ts';

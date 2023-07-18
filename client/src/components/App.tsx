@@ -1,6 +1,6 @@
 import '../App.scss';
 
-import React, { useEffect, useContext } from 'react'; // eslint-disable-line import/no-extraneous-dependencies
+import React, { useEffect, useContext } from 'react';
 
 import TaskInput from './TaskInput/index.tsx';
 import List from './TaskList/index.tsx';

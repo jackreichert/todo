@@ -1,5 +1,5 @@
-import React from 'react'; // eslint-disable-line import/no-extraneous-dependencies
-import axios from 'axios'; // eslint-disable-line import/no-extraneous-dependencies
+import React from 'react';
+import axios from 'axios';
 import { TaskType } from './types.ts';
 
 // eslint-disable-next-line import/prefer-default-export

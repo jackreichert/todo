@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./server
-          dockerfile: ./server/app/Dockerfile-dev
+          dockerfile: ./app/Dockerfile-dev
           push: false
           tags: jackreichert/over-engineered-todo:${{ github.sha }}
 
@@ -52,6 +52,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./client
-          dockerfile: ./client/Dockerfile-dev
+          dockerfile: ./Dockerfile-dev
           push: false
           tags: jackreichert/over-engineered-todo:${{ github.sha }}

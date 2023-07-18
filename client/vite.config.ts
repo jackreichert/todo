@@ -17,4 +17,8 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './tests/setup.js',
   },
+  server: {
+    port: 5173,
+    host: '0.0.0.0',
+  },
 } as JSXConfig);

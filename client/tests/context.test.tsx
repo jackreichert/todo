@@ -1,41 +1,13 @@
-import {
-  useContext, useEffect, useState, useMemo,
-} from 'react';
 import '@testing-library/jest-dom';
-import { describe } from 'vitest';
+import {
+  it, expect, describe, vi,
+} from 'vitest';
 import { render } from '@testing-library/react';
+import { MockApp } from './MockProvider';
 
-import AppContext from '../src/context';
-import { TaskType } from '../src/types';
-
-function Task() {
-  const { tasks } = useContext(AppContext);
-  const handleChange = () => {};
-
-  return (
-    <li>
-      {tasks[0].title}
-      {' '}
-      <input type="checkbox" onChange={handleChange} checked={tasks[0].status} />
-    </li>
-  );
-}
-
-function MockApp() {
-  const singleTask: TaskType[] = [{ title: 'first task', status: true }];
-  const [tasks, setTasks] = useState<TaskType[]>(singleTask);
-  const contextValues = useMemo(() => ({ tasks, setTasks }), [tasks, setTasks]);
-
-  useEffect(() => {
-    setTasks([{ title: 'updated task', status: false }]);
-  }, []);
-
-  return (
-    <AppContext.Provider value={contextValues}>
-      <Task />
-    </AppContext.Provider>
-  );
-}
+vi.mock('../src/utils', () => ({
+  getTasks: vi.fn(),
+}));
 
 describe('AppContext', () => {
   it('contains task objects', () => {

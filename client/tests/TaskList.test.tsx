@@ -1,9 +1,15 @@
-import React from 'react';
 import '@testing-library/jest-dom';
 import { render, within } from '@testing-library/react';
+import {
+  it, expect, describe, vi,
+} from 'vitest';
 
 import List from '../src/components/TaskList';
 import MockProvider from './MockProvider';
+
+vi.mock('../src/utils', () => ({
+  getTasks: vi.fn(),
+}));
 
 describe('List', () => {
   it('contains a list html element', () => {

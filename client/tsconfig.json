@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "target": "ES2022",
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
@@ -23,6 +24,6 @@
     /* testing */
     "types": ["jest"]
   },
-  "include": ["src"],
+  "include": ["src", "tests", "**/*.tsx", "vite.config.ts", ".eslintrc.cjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

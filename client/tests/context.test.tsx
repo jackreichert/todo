@@ -10,11 +10,13 @@ import { TaskType } from '../src/types';
 
 function Task() {
   const { tasks } = useContext(AppContext);
+  const handleChange = () => {};
+
   return (
     <li>
       {tasks[0].title}
       {' '}
-      <input type="checkbox" checked={tasks[0].status} />
+      <input type="checkbox" onChange={handleChange} checked={tasks[0].status} />
     </li>
   );
 }

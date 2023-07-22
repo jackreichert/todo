@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 import '../src/App.scss';
 import { TaskType } from '../src/types';
@@ -14,10 +14,11 @@ const initialState:TaskType[] = [
 
 function MockProvider() {
   const [tasks, setTasks] = useState<TaskType[]>(initialState);
+  const contextValues = useMemo(() => ({ tasks, setTasks }), [tasks, setTasks]);
 
   return (
     <div className="container mx-auto">
-      <AppContext.Provider value={{ tasks, setTasks }}>
+      <AppContext.Provider value={contextValues}>
         <App />
       </AppContext.Provider>
     </div>

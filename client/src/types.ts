@@ -1,15 +1,15 @@
 import React from 'react';
 
 export interface TaskType {
-    title:string;
-    status:boolean;
+  title:string;
+  status:boolean;
 }
 
 export interface AppContextType {
-    tasks: TaskType[];
-    setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
+  tasks: TaskType[];
+  setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>;
 }
 
 export interface IsErrorProp {
-    isError: boolean
+  isError: boolean
 }

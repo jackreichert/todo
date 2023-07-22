@@ -1,7 +1,6 @@
-import React from 'react';
 import '../App.scss';
-import TaskInput from './TaskInput/index.tsx';
-import List from './TaskList/index.tsx';
+import TaskInput from './TaskInput/index';
+import List from './TaskList/index';
 
 function App() {
   return (

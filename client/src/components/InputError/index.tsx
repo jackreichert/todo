@@ -1,5 +1,4 @@
-import React from 'react';
-import { IsErrorProp } from '../../types.ts';
+import { IsErrorProp } from '../../types';
 
 export default function InputError({ isError }: IsErrorProp) {
   if (isError) {

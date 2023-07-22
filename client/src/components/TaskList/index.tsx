@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import AppContext from '../../context.ts';
-import Task from '../Task/index.tsx';
+import AppContext from '../../context';
+import Task from '../Task/index';
 
 export default function List() {
   const { tasks } = useContext(AppContext);

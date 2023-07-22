@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { TaskType } from '../../types.ts';
-import AppContext from '../../context.ts';
+import { useContext } from 'react';
+import { TaskType } from '../../types';
+import AppContext from '../../context';
 
 export default function Task({ title, status }: TaskType) {
   const { tasks, setTasks } = useContext(AppContext);

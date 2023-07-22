@@ -1,9 +1,16 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import { it, xit, expect, describe } from 'vitest';
+import {
+  it, expect, describe, vi
+} from 'vitest';
 import App from '../src/components/App';
+// eslint-disable-next-line import/no-unresolved
 import MockProvider from './MockProvider';
+
+vi.mock('../src/utils.ts', () => ({
+  getTasks: vi.fn(),
+}));
 
 describe('App', () => {
   it('renders App component', () => {

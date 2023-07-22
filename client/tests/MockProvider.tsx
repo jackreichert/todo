@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import {
+  useState, useMemo, useEffect, useContext,
+} from 'react';
 
 import '../src/App.scss';
 import { TaskType } from '../src/types';
@@ -14,10 +16,10 @@ const initialState:TaskType[] = [
 
 function MockProvider() {
   const [tasks, setTasks] = useState<TaskType[]>(initialState);
-
+  const mockContextValue = useMemo(() => ({ tasks, setTasks }), [tasks, setTasks]);
   return (
     <div className="container mx-auto">
-      <AppContext.Provider value={{ tasks, setTasks }}>
+      <AppContext.Provider value={mockContextValue}>
         <App />
       </AppContext.Provider>
     </div>
@@ -25,3 +27,34 @@ function MockProvider() {
 }
 
 export default MockProvider;
+
+function Task() {
+  const { tasks } = useContext(AppContext);
+  const handleChange = () => {
+    // do nothing
+  };
+
+  return (
+    <li>
+      {tasks[0].title}
+      {' '}
+      <input type="checkbox" onChange={handleChange} checked={tasks[0].status} />
+    </li>
+  );
+}
+
+export const MockApp = function () {
+  const singleTask: TaskType[] = [{ title: 'first task', status: true }];
+  const [tasks, setTasks] = useState<TaskType[]>(singleTask);
+  const contextValue = useMemo(() => ({ tasks, setTasks }), [tasks, setTasks]);
+
+  useEffect(() => {
+    setTasks([{ title: 'updated task', status: false }]);
+  }, []);
+
+  return (
+    <AppContext.Provider value={contextValue}>
+      <Task />
+    </AppContext.Provider>
+  );
+};

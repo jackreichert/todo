@@ -1,18 +1,18 @@
 import '../App.scss';
 
-import React, { useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 
-import TaskInput from './TaskInput/index.tsx';
-import List from './TaskList/index.tsx';
+import TaskInput from './TaskInput/index';
+import List from './TaskList/index';
 
-// import { getTasks } from '../utils.ts';
-import AppContext from '../context.ts';
+import { getTasks } from '../utils';
+import AppContext from '../context';
 
 function App() {
   const { setTasks } = useContext(AppContext);
 
   useEffect(() => {
-    // getTasks(setTasks);
+    getTasks(setTasks);
   }, [setTasks]);
 
   return (

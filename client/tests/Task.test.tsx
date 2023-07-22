@@ -1,8 +1,16 @@
 import '@testing-library/jest-dom';
-import { ByRoleOptions, fireEvent, render, within } from '@testing-library/react';
+import {
+  ByRoleOptions, fireEvent, render, within,
+} from '@testing-library/react';
 import React from 'react';
-import { it, xit, expect, describe } from 'vitest';
+import {
+  it, expect, describe, beforeEach, vi,
+} from 'vitest';
 import MockProvider from './MockProvider';
+
+vi.mock('../src/utils.ts', () => ({
+  getTasks: vi.fn(),
+}));
 
 describe('Task', () => {
   it('can toggle the completed checkbox', () => {

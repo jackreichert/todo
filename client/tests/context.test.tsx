@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import '@testing-library/jest-dom';
 import { describe } from 'vitest';
 import { render } from '@testing-library/react';
@@ -31,6 +31,7 @@ const MockApp = function () {
     </AppContext.Provider>
   );
 };
+
 describe('AppContext', () => {
   it('contains task objects', () => {
     const wrapper = render(<MockApp />);

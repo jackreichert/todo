@@ -13,10 +13,19 @@ export default function Task({ title, status }: TaskType) {
     setTasks(newTasks);
   }
 
+  function handleDelete(e:React.MouseEvent<HTMLButtonElement>) {
+    let liTitle = (e.target as HTMLElement).parentNode?.textContent || '';
+    liTitle = liTitle.slice(0, -10);
+    const newTasks: TaskType[] = tasks.filter((task) => liTitle !== task.title);
+    setTasks(newTasks);
+  }
+
   return (
     <li className="list-none my-4 flex justify-between">
       {title}
       <input type="checkbox" checked={status} onChange={handleChange} />
+      <button type="button">Edit</button>
+      <button type="button" onClick={handleDelete}>Delete</button>
     </li>
   );
 }

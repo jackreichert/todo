@@ -11,5 +11,10 @@ export interface AppContextType {
 }
 
 export interface IsErrorProp {
-  isError: boolean
+  isError: boolean;
+}
+
+export interface TaskInputProp {
+  title: string;
+  isEdit: boolean;
 }

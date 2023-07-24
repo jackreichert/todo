@@ -7,6 +7,10 @@ export default function Task({ title, status }: TaskType) {
   const [isEdit, setIsEdit] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
 
+  function isValid():boolean {
+    return newTitle.length >= 3;
+  }
+
   function handleStatusChange() {
     const newTasks: TaskType[] = tasks.map((task) => (title === task.title ? {
       title: task.title,
@@ -34,18 +38,30 @@ export default function Task({ title, status }: TaskType) {
       title: newTitle,
       status: task.status,
     } : task));
-    setTasks(newTasks);
-    setIsEdit(!isEdit);
+    if (isValid()) {
+      setTasks(newTasks);
+      setIsEdit(!isEdit);
+    }
   }
 
   function handleCancel() {
     setIsEdit(!isEdit);
   }
 
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      handleSave();
+    }
+
+    if (event.key === 'Escape') {
+      handleCancel();
+    }
+  }
+
   if (isEdit) {
     return (
       <li className="list-none my-4 flex justify-between">
-        <input type="text" onChange={handleTitleChange} value={newTitle} />
+        <input type="text" onChange={handleTitleChange} onKeyDown={handleKeyDown} value={newTitle} />
         <button type="button" onClick={handleSave}>Save</button>
         <button type="button" onClick={handleCancel}>Cancel</button>
       </li>

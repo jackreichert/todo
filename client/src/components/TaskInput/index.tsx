@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import InputError from '../InputError/index';
 import AppContext from '../../context';
-import { TaskType } from '../../types';
+import { TaskType, TaskInputProp } from '../../types';
 
-export default function TaskInput() {
-  const [taskInput, setTaskInput] = useState<string>('');
+export default function TaskInput({ title = '', isEdit = false }:TaskInputProp) {
+  const [taskInput, setTaskInput] = useState<string>(title);
   const { tasks, setTasks } = useContext(AppContext);
   const [wasChanged, setWasChanged] = useState(false);
 
@@ -18,8 +18,13 @@ export default function TaskInput() {
   }
 
   function updateTaskList() {
-    const newItem: TaskType = { title: taskInput, status: false };
-    setTasks([...tasks, newItem]);
+    const newTask: TaskType = { title: taskInput, status: false };
+    if (isEdit) {
+      const newTasks: TaskType[] = tasks.map((task) => (title === task.title ? newTask : task));
+      setTasks(newTasks);
+    } else {
+      setTasks([...tasks, newTask]);
+    }
     setTaskInput('');
     setWasChanged(false);
   }
@@ -56,7 +61,7 @@ export default function TaskInput() {
         className="ml-2 p-4 border-solid border-2 border-slate-300"
         onClick={handleClick}
       >
-        click to add
+        Save
       </button>
       <InputError isError={!isValid() && wasChanged} />
     </div>

@@ -7,7 +7,7 @@ export default function List() {
   const { tasks } = useContext(AppContext);
 
   return (
-    <ul data-testid="task-list" className="mt-10 w-1/4 mx-auto">
+    <ul data-testid="task-list" className="mt-10 w-1/3 mx-auto">
       {tasks.map((task) => (
         <Task key={uuidv4()} title={task.title} status={task.status} />
       ))}

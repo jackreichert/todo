@@ -6,13 +6,13 @@ import TaskInput from '../src/components/TaskInput';
 
 describe('Input', () => {
   it('contains an input html element', () => {
-    const { getByPlaceholderText } = render(<TaskInput />);
+    const { getByPlaceholderText } = render(<TaskInput title="" isEdit={false} />);
 
     expect(getByPlaceholderText('add your next task to do')).toBeInTheDocument();
   });
 
   it('input field test with click', () => {
-    const { getByTestId } = render(<TaskInput />);
+    const { getByTestId } = render(<TaskInput title="" isEdit={false} />);
     const input = getByTestId('task-input') as HTMLInputElement;
     const button = getByTestId('task-submit') as HTMLButtonElement;
     fireEvent.change(input, { target: { value: 'test' } });
@@ -22,7 +22,7 @@ describe('Input', () => {
   });
 
   it('input field test with enter', () => {
-    const { getByTestId } = render(<TaskInput />);
+    const { getByTestId } = render(<TaskInput title="" isEdit={false} />);
     const input = getByTestId('task-input') as HTMLInputElement;
     fireEvent.change(input, { target: { value: 'test' } });
     expect(input.value).toBe('test');
@@ -32,7 +32,7 @@ describe('Input', () => {
 
   it('shows error on empty input submission', () => {
     const errorText = 'Please enter a task longer than 3 letters.';
-    const { getByTestId } = render(<TaskInput />);
+    const { getByTestId } = render(<TaskInput title="" isEdit={false} />);
     const input = getByTestId('task-input') as HTMLInputElement;
 
     let errorMessage = getByTestId('task-error') as HTMLInputElement;

@@ -1,14 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {
-  it, expect, describe, vi,
+  it, expect, describe,
 } from 'vitest';
 import App from '../src/components/App';
 import MockProvider from './MockProvider';
-
-vi.mock('../src/utils', () => ({
-  getTasks: vi.fn(),
-}));
 
 describe('App', () => {
   it('renders App component', () => {

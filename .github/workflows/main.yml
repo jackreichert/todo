@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v2
         with:
           node-version: 20
 
@@ -27,7 +30,7 @@ jobs:
         run: npm run coverage:badge
 
       - name: Add & Commit
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v7.2.0
         with:
           node-version: 20
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -41,7 +44,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
 
       - name: Build server Docker image
         uses: docker/build-push-action@v2

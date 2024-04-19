@@ -1,14 +1,14 @@
 version: '3'
 services:
-  server:
+  backend:
     build:
-      context: ./server
+      context: backend
       dockerfile: Dockerfile-dev
-    container_name: todo-server
+    container_name: todo-backend
     ports:
       - "5001:5000"
     volumes:
-      - ./server:/app
+      - ./backend:/app
     environment:
       DYNAMO_ENDPOINT: "http://dynamodb-local:8000"
       AWS_REGION: "us-west-2"
@@ -17,15 +17,15 @@ services:
     depends_on:
     - dynamodb-local
 
-  client:
+  frontend:
     build:
-      context: ./client
+      context: frontend
       dockerfile: Dockerfile-dev
-    container_name: todo-client
+    container_name: todo-frontend
     ports:
       - "5173:5173"
     volumes:
-      - ./client/src:/app/src
+      - ./frontend/src:/app/src
 
   dynamodb-local:
     image: amazon/dynamodb-local:latest

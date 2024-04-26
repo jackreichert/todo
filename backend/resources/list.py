@@ -3,6 +3,7 @@ from flask.views import MethodView
 from flask_smorest import Blueprint
 
 from app import db
+from schemas.list import ListSchema
 
 blp = Blueprint('List', 'list', url_prefix='/list', description='List operations')
 
@@ -11,7 +12,7 @@ class ListView(MethodView):
     def get(self):
         return db.lists
 
-    def post(self):
-        list_data = request.get_json()
+    @blp.arguments(ListSchema)
+    def post(self, list_data):
         db.lists.append(list_data)
         return db.lists

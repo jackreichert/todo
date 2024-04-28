@@ -5,6 +5,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_smorest import Api
 from resources.list import blp as ListBlueprint
+from resources.task import blp as TaskBlueprint
 
 def create_app(db_url=None):
     app = Flask(__name__)
@@ -21,6 +22,7 @@ def create_app(db_url=None):
 
     api = Api(app)
     api.register_blueprint(ListBlueprint)
+    api.register_blueprint(TaskBlueprint)
 
     @app.route('/ping', methods=['GET'])
     def ping():

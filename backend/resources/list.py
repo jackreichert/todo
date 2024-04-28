@@ -1,4 +1,4 @@
-from flask import request
+from uuid import uuid4 as UUID4
 from flask.views import MethodView
 from flask_smorest import Blueprint
 
@@ -14,5 +14,6 @@ class ListView(MethodView):
 
     @blp.arguments(ListSchema)
     def post(self, list_data):
+        list_data['id'] = str(UUID4())
         db.lists.append(list_data)
         return db.lists

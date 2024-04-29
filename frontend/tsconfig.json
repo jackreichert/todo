@@ -22,8 +22,15 @@
     "noFallthroughCasesInSwitch": true,
 
     /* testing */
-    "types": ["jest"]
+    "types": ["jest", "node"]
   },
-  "include": ["src", "tests", "**/*.tsx", "vite.config.ts", ".eslintrc.cjs"],
+  "include": [
+    "src",
+    "tests",
+    "**/*.tsx",
+    "vite.config.ts",
+    ".eslintrc.cjs",
+    "node_modules/vitest/globals.d.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

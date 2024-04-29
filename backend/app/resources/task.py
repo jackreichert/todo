@@ -4,8 +4,8 @@ from flask import jsonify, Response
 from flask.views import MethodView
 from flask_smorest import Blueprint
 
-from app import db
-from schemas.task import TaskSchema
+from backend.app import db
+from backend.app.schemas.task import TaskSchema
 
 blp = Blueprint('Task', 'task', url_prefix='/task', description='Task operations')
 

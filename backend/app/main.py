@@ -12,7 +12,7 @@ def create_app(db_url=None):
     CORS(app)
     logging.basicConfig(filename='app.log', level=logging.DEBUG)
 
-    app.debug = os.getenv('FLASK_DEBUG', False).lower() == "true"
+    app.debug = os.getenv('FLASK_DEBUG', "False").lower() == "true"
     app.config["API_TITLE"] = "Permits REST API"
     app.config["API_VERSION"] = "v1"
     app.config["OPENAPI_VERSION"] = "3.0.3"

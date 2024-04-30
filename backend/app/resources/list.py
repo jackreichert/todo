@@ -1,12 +1,10 @@
 from typing import List, Dict, Any
 from uuid import uuid4 as UUID4
-from flask import jsonify, Response
 from flask.views import MethodView
 from flask_smorest import Blueprint
 
 from backend.app import db
 from backend.app.schemas.list import ListSchema
-from backend.app.schemas.task import TaskSchema
 
 blp = Blueprint('List', 'list', url_prefix='/list', description='List operations')
 

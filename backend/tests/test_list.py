@@ -1,6 +1,9 @@
+import re
 
 
 class TestListCreation:
+    UUID_REGEX = r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+
     def test_create_list(self, client):
         title = "Test List"
         response = client.post(
@@ -9,7 +12,7 @@ class TestListCreation:
         )
         assert response.status_code == 201
         assert isinstance(response.json, list)
-        assert "id" in response.json[0]
+        assert "id" in response.json[0] and re.match(self.UUID_REGEX, response.json[0]["id"])
         assert response.json[0]["title"] == title
 
     def test_get_list(self, client):
@@ -25,6 +28,5 @@ class TestListCreation:
         assert response.status_code == 200
         assert isinstance(response.json, list)
         assert len(response.json) == 2
-        assert "id" in response.json[0]
-        assert "id" in response.json[1]
+        assert "id" in response.json[1] and re.match(self.UUID_REGEX, response.json[1]["id"])
         assert response.json[1]["title"] == title

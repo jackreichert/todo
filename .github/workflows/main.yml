@@ -61,6 +61,11 @@ jobs:
           cd backend
           poetry run black --check .
 
+      - name: run tests
+        run: |
+          cd backend
+          poetry run pytest  
+
   build:
     runs-on: ubuntu-latest
     steps:

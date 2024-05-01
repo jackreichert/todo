@@ -64,7 +64,7 @@ jobs:
       - name: run tests
         run: |
           cd backend
-          poetry run pytest  
+          poetry run pytest --cov=app
 
   build:
     runs-on: ubuntu-latest

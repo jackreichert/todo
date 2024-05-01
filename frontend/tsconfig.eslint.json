@@ -4,6 +4,7 @@
       "src",
       "tests",
       ".eslintrc.js",
+      "vite.config.ts",
     ]
   }
   

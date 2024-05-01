@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react';
-import './App.scss';
 
-import { TaskType } from './types';
-import AppContext from './context';
-import App from './components/App';
+import '@/App.scss';
+import { TaskType } from '@/types';
+import AppContext from '@/context';
+import App from '@/components/App';
 
 function AppProvider() {
   const [tasks, setTasks] = useState<TaskType[]>([]);

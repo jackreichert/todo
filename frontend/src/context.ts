@@ -1,5 +1,6 @@
 import { createContext } from 'react';
-import { AppContextType } from './types';
+
+import { AppContextType } from '@/types';
 
 const AppContext = createContext<AppContextType>({
   tasks: [{ title: '', status: false }],

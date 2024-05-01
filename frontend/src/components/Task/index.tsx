@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 
-import { TaskType } from '../../types';
-import AppContext from '../../context';
-import TaskInput from '../TaskInput';
+import { TaskType } from '@/types';
+import AppContext from '@/context';
+import TaskInput from '@/components/TaskInput';
 
 export default function Task({ title, status }: TaskType) {
   const { tasks, setTasks } = useContext(AppContext);

@@ -1,7 +1,7 @@
-import '../App.scss';
+import '@/App.scss';
 
-import TaskInput from './TaskInput/index';
-import List from './TaskList/index';
+import TaskInput from '@/components/TaskInput/index';
+import List from '@/components/TaskList/index';
 
 function App() {
   return (

@@ -17,7 +17,6 @@ module.exports = {
   },
   plugins: ['react-refresh'],
   rules: {
-    'react/jsx-uses-react': 'error',
     'react-refresh/only-export-components': 'warn',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'react/react-in-jsx-scope': 'off',
@@ -27,6 +26,9 @@ module.exports = {
     'import/resolver': {
       node: {
         moduleDirectory: ['node_modules', 'src'],
+      },
+      typescript: {
+        alwaysTryTypes: true,
       },
     },
   },

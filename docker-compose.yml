@@ -10,28 +10,35 @@ services:
     volumes:
       - ./backend:/app
     environment:
-      DYNAMO_ENDPOINT: "http://dynamodb-local:8000"
+      DATABASE_URL: "postgresql://postgres:postgres@database:5432/postgres"
       AWS_REGION: "us-west-2"
       AWS_ACCESS_KEY_ID: local
       AWS_SECRET_ACCESS_KEY: local
+      RUN_MIGRATIONS: true
     depends_on:
-    - dynamodb-local
+    - database
 
   frontend:
     build:
       context: frontend
       dockerfile: Dockerfile-dev
+      args:
+        VITE_REACT_APP_API_URL: "http://localhost:5001"
     container_name: todo-frontend
     ports:
       - "5173:5173"
     volumes:
       - ./frontend/src:/app/src
 
-  dynamodb-local:
-    image: amazon/dynamodb-local:latest
-    container_name: dynamodb-local
-    ports:
-      - "8000:8000"
+  database:
+    image: postgres:13
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  dynamodb-data:
+  postgres_data:

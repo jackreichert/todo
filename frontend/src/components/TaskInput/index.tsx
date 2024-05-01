@@ -54,12 +54,14 @@ export default function TaskInput({ title = '', isEdit = false }:TaskInputProp) 
         onKeyDown={handleKeyDown}
         onFocus={() => setWasChanged(false)}
         minLength={3}
+        aria-label="Task Input"
       />
       <button
         type="button"
         data-testid="task-submit"
         className="ml-2 p-4 border-solid border-2 border-slate-300"
         onClick={handleClick}
+        aria-label="Save Task"
       >
         Save
       </button>

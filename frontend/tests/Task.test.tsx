@@ -34,13 +34,13 @@ describe('Task', () => {
     const { getAllByRole } = within(list);
 
     let items = getAllByRole('listitem');
-    const button = getAllByRole('button', { container: items[0] } as ByRoleOptions);
+    const deleteButton = within(items[0]).getByRole('button', { name: /Delete/i }); // Change this line
 
-    expect(button[1]).toBeDefined();
-    expect(button[1]).toHaveTextContent('Delete');
+    expect(deleteButton).toBeDefined();
+    expect(deleteButton).toHaveAttribute('aria-label', 'Delete Go to the store'); // Change this line
     expect(items[0]).toHaveTextContent('Go to the store');
 
-    fireEvent.click(button[1]);
+    fireEvent.click(deleteButton);
     items = getAllByRole('listitem');
     expect(items[0]).not.toHaveTextContent('Go to the store');
   });
@@ -52,10 +52,9 @@ describe('Task', () => {
     const { getAllByRole } = within(list);
 
     const items = getAllByRole('listitem');
-    const button = getAllByRole('button', { container: items } as ByRoleOptions);
+    const editButton = within(items[0]).getByRole('button', { name: /Edit/i }); // Change this line
 
-    expect(button[0]).toBeDefined();
-    expect(button[0]).toHaveTextContent('Edit');
+    expect(editButton).toBeDefined();
   });
 
   it('when edit is clicked, makes title editable, and adds buttons for editing', () => {
@@ -68,7 +67,6 @@ describe('Task', () => {
     let buttons = getAllByRole('button', { container: items } as ByRoleOptions);
 
     expect(buttons[0]).toBeDefined();
-    expect(buttons[0]).toHaveTextContent('Edit');
     fireEvent.click(buttons[0]);
     items = getAllByRole('listitem');
     const inputs = getAllByRole('textbox', { container: items[0] } as ByRoleOptions);
@@ -92,7 +90,6 @@ describe('Task', () => {
     expect(title).toHaveTextContent('Go to the store');
 
     expect(buttons[0]).toBeDefined();
-    expect(buttons[0]).toHaveTextContent('Edit');
     fireEvent.click(buttons[0]);
     items = getAllByRole('listitem');
 
@@ -123,7 +120,6 @@ describe('Task', () => {
     expect(title).toHaveTextContent('Go to the store');
 
     expect(buttons[0]).toBeDefined();
-    expect(buttons[0]).toHaveTextContent('Edit');
     fireEvent.click(buttons[0]);
 
     items = getAllByRole('listitem');

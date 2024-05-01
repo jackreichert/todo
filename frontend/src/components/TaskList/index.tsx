@@ -1,10 +1,18 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import AppContext from '../../context';
-import Task from '../Task/index';
+
+import AppContext from '@/context';
+import Task from '@/components/Task/index';
 
 export default function List() {
-  const { tasks } = useContext(AppContext);
+  const { tasks, setTasks } = useContext(AppContext);
+
+  useEffect(() => {
+    const data = localStorage.getItem('tasks');
+    if (data) {
+      setTasks(JSON.parse(data));
+    }
+  }, [setTasks]);
 
   return (
     <ul data-testid="task-list" className="mt-10 w-full mx-auto">

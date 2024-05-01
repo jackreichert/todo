@@ -1,4 +1,4 @@
-import { IsErrorProp } from '../../types';
+import { IsErrorProp } from '@/types';
 
 export default function InputError({ isError }: IsErrorProp) {
   if (isError) {

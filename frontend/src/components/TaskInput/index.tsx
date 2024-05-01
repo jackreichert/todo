@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
-import InputError from '../InputError/index';
-import AppContext from '../../context';
-import { TaskType, TaskInputProp } from '../../types';
+
+import InputError from '@/components/InputError/index';
+import AppContext from '@/context';
+import { TaskType, TaskInputProp } from '@/types';
 
 export default function TaskInput({ title = '', isEdit = false }:TaskInputProp) {
   const [taskInput, setTaskInput] = useState<string>(title);

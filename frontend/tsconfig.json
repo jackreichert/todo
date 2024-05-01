@@ -6,6 +6,10 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -24,13 +28,6 @@
     /* testing */
     "types": ["jest", "node"]
   },
-  "include": [
-    "src",
-    "tests",
-    "**/*.tsx",
-    "vite.config.ts",
-    ".eslintrc.cjs",
-    "node_modules/vitest/globals.d.ts"
-  ],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

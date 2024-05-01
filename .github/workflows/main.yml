@@ -39,6 +39,33 @@ jobs:
           committer_email: actions@github.com
           message: "Updates readme with test coverage"
 
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: install packages
+        run: | 
+          cd backend 
+          pip install poetry 
+          poetry config virtualenvs.create false
+          poetry install --no-interaction --no-ansi
+
+      - name: lint code
+        run: |
+          cd backend
+          poetry run black --check .
+
+      - name: run tests
+        run: |
+          cd backend
+          poetry run pytest  
+
   build:
     runs-on: ubuntu-latest
     steps:

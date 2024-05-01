@@ -66,6 +66,21 @@ jobs:
           cd backend
           poetry run pytest --cov=app
 
+      - name: generate coverage badge
+        run: |
+          cd backend
+          coverage-badge -o coverage.svg
+
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v7.2.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          add: ./backend/coverage.svg
+          new_branch: ${{ github.event.pull_request.head.ref }}
+          committer_name: Github Actions
+          committer_email: actions@github.com
+          message: "Updates coverage badge"
+
   build:
     runs-on: ubuntu-latest
     steps:

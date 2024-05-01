@@ -1,7 +1,7 @@
 import re
 
 
-class TestListCreation:
+class TestListOperations:
     UUID_REGEX = r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
 
     def test_create_list(self, client):

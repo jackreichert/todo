@@ -6,6 +6,6 @@ class TaskSchema(Schema):
     title = fields.Str(required=True)
     created_at = fields.DateTime(dump_only=True)
     updated_at = fields.DateTime(dump_only=True)
-    list_id = fields.UUID(required=True)
+    list_id = fields.UUID(dump_only=True)
     user_id = fields.Int(dump_only=True)
     completed = fields.Bool()

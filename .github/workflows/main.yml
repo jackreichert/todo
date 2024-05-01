@@ -69,7 +69,8 @@ jobs:
       - name: generate coverage badge
         run: |
           cd backend
-          coverage-badge -o coverage.svg
+          rm -f coverage.svg
+          poetry run coverage-badge -o coverage.svg
 
       - name: Add & Commit
         uses: EndBug/add-and-commit@v7.2.0

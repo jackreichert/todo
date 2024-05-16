@@ -27,7 +27,7 @@ export default function TaskInput({ title = '', isEdit = false }:TaskInputProp) 
     } else {
       const updatedTasksList = createTask(newTask, defaultList);
       updatedTasksList.then((res) => {
-        console.log(newTask, res);
+        setTasks(res);
       });
       setTasks([...tasks, newTask]);
     }

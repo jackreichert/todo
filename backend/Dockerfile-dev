@@ -1,21 +1,22 @@
 FROM python:3.11-slim-buster
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /backend
 
 # Copy the requirements file
-COPY poetry.lock pyproject.toml /app/
+COPY poetry.lock pyproject.toml /backend/
 
 # Install Poetry and dependencies
 RUN pip install poetry && poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi
 
 # Copy the application code
-COPY . /app
+COPY . /backend
 
 # Expose the port your WSGI application will listen on (adjust as needed)
 EXPOSE 5000
 
 ENV FLASK_APP=app.main:application
+ENV FLASK_DEBUG=true
 
 # Run the WSGI application
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]

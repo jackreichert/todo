@@ -8,10 +8,6 @@ import {
 
 import MockProvider from './MockProvider';
 
-vi.mock('../src/utils', () => ({
-  getTasks: vi.fn(),
-}));
-
 describe('Task', () => {
   it('can toggle the completed checkbox', () => {
     const { getByRole } = render(<MockProvider />);

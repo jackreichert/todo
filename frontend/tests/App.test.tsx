@@ -1,12 +1,18 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {
-  it, expect, describe,
+  it, expect, describe, beforeEach,
 } from 'vitest';
 import App from '../src/components/App';
 import MockProvider from './MockProvider';
 
 describe('App', () => {
+  beforeEach(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    import.meta.env.VITE_REACT_APP_API_URL = 'http://localhost:3000';
+  });
+
   it('renders App component', () => {
     render(<App />);
 

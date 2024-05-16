@@ -21,11 +21,11 @@ export default function List() {
     }
     const tasksData = fetchTasks(defaultList);
     tasksData.then((res) => setTasks(res));
-  }, [setLists, setDefaultList, defaultList, setTasks]);
+  }, [setLists, setDefaultList, defaultList, setTasks, tasks]);
 
   return (
     <ul data-testid="task-list" className="mt-10 w-full mx-auto">
-      {tasks.map((task) => (
+      {Array.isArray(tasks) && tasks.map((task) => (
         <Task key={uuidv4()} title={task.title} completed={task.completed} />
       ))}
     </ul>

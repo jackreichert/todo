@@ -9,9 +9,6 @@ test('renders AppProvider without crashing', async () => {
   const root = createRoot(div);
   await act(async () => {
     root.render(<AppProvider />);
-  });
-
-  await act(async () => {
     root.unmount();
   });
 });
@@ -20,9 +17,7 @@ test('renders root element', async () => {
   const div = document.createElement('div');
   const root = createRoot(div);
 
-  await act(async () => {
-    root.render(<AppProvider />);
-  });
+  root.render(<AppProvider />);
 
   await new Promise((resolve) => {
     setTimeout(resolve, 0);

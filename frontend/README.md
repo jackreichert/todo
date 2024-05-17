@@ -1,6 +1,6 @@
 # Over-engineered To Do - Client
 
-![](https://img.shields.io/badge/Coverage-87%25-83A603.svg?prefix=$coverage$)
+![](https://img.shields.io/badge/Coverage-81%25-83A603.svg?prefix=$coverage$)
 
 ## Overview
 

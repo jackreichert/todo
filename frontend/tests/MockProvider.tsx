@@ -3,15 +3,15 @@ import {
 } from 'react';
 
 import '../src/App.scss';
-import { TaskType } from '../src/types';
+import { ListType, TaskType } from '../src/types';
 import AppContext from '../src/context';
 import App from '../src/components/App';
 
 const initialState:TaskType[] = [
-  { title: 'Go to the store', status: false },
-  { title: 'Buy some cheese', status: false },
-  { title: 'Buy a Vision Pro', status: true },
-  { title: 'Learn to fly', status: false },
+  { title: 'Go to the store', completed: false },
+  { title: 'Buy some cheese', completed: false },
+  { title: 'Buy a Vision Pro', completed: true },
+  { title: 'Learn to fly', completed: false },
 ];
 
 function MockTask() {
@@ -22,18 +22,22 @@ function MockTask() {
     <li>
       {tasks[0].title}
       {' '}
-      <input type="checkbox" onChange={handleChange} checked={tasks[0].status} />
+      <input type="checkbox" onChange={handleChange} checked={tasks[0].completed} />
     </li>
   );
 }
 
 export function MockApp() {
-  const singleTask: TaskType[] = [{ title: 'first task', status: true }];
+  const singleTask: TaskType[] = [{ title: 'first task', completed: true }];
   const [tasks, setTasks] = useState<TaskType[]>(singleTask);
-  const contextValues = useMemo(() => ({ tasks, setTasks }), [tasks, setTasks]);
+  const [lists, setLists] = useState<ListType[]>([]);
+  const [defaultList, setDefaultList] = useState<string>('');
+  const contextValues = useMemo(() => ({
+    tasks, setTasks, lists, setLists, defaultList, setDefaultList,
+  }), [tasks, setTasks, lists, setLists, defaultList, setDefaultList]);
 
   useEffect(() => {
-    setTasks([{ title: 'updated task', status: false }]);
+    setTasks([{ title: 'updated task', completed: false }]);
   }, []);
 
   return (
@@ -45,7 +49,11 @@ export function MockApp() {
 
 function MockProvider() {
   const [tasks, setTasks] = useState<TaskType[]>(initialState);
-  const contextValues = useMemo(() => ({ tasks, setTasks }), [tasks, setTasks]);
+  const [lists, setLists] = useState<ListType[]>([]);
+  const [defaultList, setDefaultList] = useState<string>('');
+  const contextValues = useMemo(() => ({
+    tasks, setTasks, lists, setLists, defaultList, setDefaultList,
+  }), [tasks, setTasks, lists, setLists, defaultList, setDefaultList]);
 
   return (
     <div className="container mx-auto">

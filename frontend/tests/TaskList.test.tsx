@@ -7,10 +7,6 @@ import {
 import List from '../src/components/TaskList';
 import MockProvider from './MockProvider';
 
-vi.mock('../src/utils', () => ({
-  getTasks: vi.fn(),
-}));
-
 describe('List', () => {
   it('contains a list html element', () => {
     const { getByRole } = render(<List />);

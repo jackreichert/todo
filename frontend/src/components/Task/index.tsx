@@ -5,14 +5,14 @@ import { TaskType } from '@/types';
 import AppContext from '@/context';
 import TaskInput from '@/components/TaskInput';
 
-export default function Task({ title, status }: TaskType) {
+export default function Task({ title, completed }: TaskType) {
   const { tasks, setTasks } = useContext(AppContext);
   const [isEdit, setIsEdit] = useState(false);
 
   function handleStatusChange() {
     const newTasks: TaskType[] = tasks.map((task) => (title === task.title ? {
       title: task.title,
-      status: !task.status,
+      completed: !task.completed,
     } : task));
     setTasks(newTasks);
   }
@@ -51,7 +51,7 @@ export default function Task({ title, status }: TaskType) {
       <input
         id={`task-${title}`}
         type="checkbox"
-        checked={status}
+        checked={completed}
         onChange={handleStatusChange}
         className="mr-4 h-6 w-6 text-blue-800 rounded"
         aria-label={`Mark ${title} as complete`}

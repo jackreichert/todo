@@ -3,10 +3,11 @@ import React, { useContext, useState } from 'react';
 import InputError from '@/components/InputError/index';
 import AppContext from '@/context';
 import { TaskType, TaskInputProp } from '@/types';
+import { createTask } from '@/utils';
 
 export default function TaskInput({ title = '', isEdit = false }:TaskInputProp) {
   const [taskInput, setTaskInput] = useState<string>(title);
-  const { tasks, setTasks } = useContext(AppContext);
+  const { tasks, setTasks, defaultList } = useContext(AppContext);
   const [wasChanged, setWasChanged] = useState(false);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -19,11 +20,15 @@ export default function TaskInput({ title = '', isEdit = false }:TaskInputProp) 
   }
 
   function updateTaskList() {
-    const newTask: TaskType = { title: taskInput, status: false };
+    const newTask: TaskType = { title: taskInput, completed: false };
     if (isEdit) {
       const newTasks: TaskType[] = tasks.map((task) => (title === task.title ? newTask : task));
       setTasks(newTasks);
     } else {
+      const updatedTasksList = createTask(newTask, defaultList);
+      updatedTasksList.then((res) => {
+        setTasks(res);
+      });
       setTasks([...tasks, newTask]);
     }
     setTaskInput('');
